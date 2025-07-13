@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate, Link, Navigate } from 'react-router-dom';
 import "../styles/Home.css";
-import Navbar from '../Components/Navbar';
+import Navbar from '../Components/Navbar/Navbar';
 import bg_1 from '../Assets/bg_1(1).jpg';
-import Button from "../Components/Button";
-import About from "../Components/About";
+import Button from "../Components/Button/Button";
+import About from "../Components/About/About";
+
 
 const Home = () => {
+
+    const navigate = useNavigate();
 
     return (
         
@@ -19,7 +23,8 @@ const Home = () => {
                     <br></br>
                     and messages for the future
                     </p>
-                    <Button btn_name="Create Your Capsule" type="primary" />
+                    <Button btn_name="Create Your Capsule" type="primary"
+                    onClick={() => navigate('/create')} />
                 </div>
 
                 <img className="bg-img" src={bg_1} alt="bg-img" />
