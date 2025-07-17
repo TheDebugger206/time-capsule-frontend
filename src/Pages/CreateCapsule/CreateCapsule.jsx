@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, Link, Navigate } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 import About from "../../Components/About/About";
 import letter from '../../Assets/Letters/letter_1.png';
@@ -14,8 +15,11 @@ import arrow_right from "../../Assets/Arrows/arrow_2.png";
 
 import './style.css';
 import Button from "../../Components/Button/Button";
+import PutInCapsule from "../PutInCapsule/PutInCapsule";
 
 const CreateCapsule = () => {
+
+    const navigate = useNavigate();
 
     // theme
     const themeColors = {
@@ -48,6 +52,7 @@ const CreateCapsule = () => {
     function changeFont(font) {
         setFont(font);
     }
+
 
     return (
         
@@ -180,7 +185,8 @@ const CreateCapsule = () => {
                         <div className="right-arrow">
                             <img src={arrow_right} alt="" />
                         </div>
-                        <Button btn_name={'Put In Capsule'} />
+                        <Button btn_name={'Put In Capsule'} 
+                        onClick={() => navigate('/putInCapsule')}/>
                 </div>
 
             </div>

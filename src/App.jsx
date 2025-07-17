@@ -5,9 +5,12 @@ import CreateCapsule from './Pages/CreateCapsule/CreateCapsule';
 import MyCapsules from './Pages/MyCapsules/MyCapsules';
 import Register from './Pages/Register/Register';
 import Explore from './Pages/Explore/Explore';
+import PutInCapsule from './Pages/PutInCapsule/PutInCapsule';
 // import SurpriseMode from './Pages/SurpriseMode';
-import './styles/App.css';
-
+// import './styles/App.css';
+import './styles/index.css';
+import './styles/style.css';
+import './styles/variables.css';
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
         <Route path="/create" element={<CreateCapsule />} />
         <Route path="/capsules" element={<MyCapsules />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/putInCapsule" element={<PutInCapsule />} />
 
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
