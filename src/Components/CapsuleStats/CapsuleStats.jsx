@@ -1,5 +1,5 @@
 import React from 'react';
-import './CapsuleStats.css';
+import './style.css';
 
 const CapsuleStats = ({icon, description, value}) => {
     return ( 
@@ -8,7 +8,7 @@ const CapsuleStats = ({icon, description, value}) => {
                 className="CapsuleStats-Icon" 
                 src={icon} 
                 alt="CapsuleStats-Icon" />
-            <p>{description}{value}</p>
+            <p className='CapsuleStats-Description'>{description}{value}</p>
         </div>
 
      );

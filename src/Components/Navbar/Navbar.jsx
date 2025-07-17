@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Button from '../Button/Button';
-import '../Navbar/Navbar.css';
+import './style.css';
 import logo from '../../Assets/logo.png';
 import menu from '../../Assets/Icons/menu.png';
 
@@ -25,9 +25,9 @@ const Navbar = () => {
                 <div className="links">
                     <Link to="/">Home</Link>
                     <Link to="/create">Create Capsule</Link>
-                    <Link to="/capsules">My Capsules</Link>
                     <Link to="/explore">Explore</Link>
-                    <Link to="/surprise">Surprise Mode</Link>
+                    <Link to="/capsules">My Capsules</Link>
+                    <Link to="/surprise">Surprise Me</Link>
                 </div>
 
                 <div className='buttons'>

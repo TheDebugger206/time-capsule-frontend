@@ -10,5 +10,11 @@
 
 .CapsuleStats-Icon {
     width: 2vw;
+    margin-right: 1.5vw;
+}
 
+.CapsuleStats-Description {
+    font-size: 1.1vw;
+    color: var(--text-color);
+    font-weight: 600;
 }

@@ -1,5 +1,8 @@
 import React from 'react';
-import './Button.css';
+<<<<<<< HEAD
+=======
+import './style.css';
+>>>>>>> Components
 
 const Button = ({btn_name, onClick, type = "primary"}) => {
     const btnClass = `btn ${type}`;
