@@ -1,9 +1,9 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from './Pages/Home';
-import Login from './Pages/Login';
-import CreateCapsule from './Pages/CreateCapsule';
+import Home from './Pages/';
+import Login from './Pages/Login/Login';
+import CreateCapsule from './Pages/CreateCapsule/CreateCapsule';
 import MyCapsules from './Pages/MyCapsules';
-import Register from './Pages/Register';
+import Register from './Pages/Register/Register';
 import Explore from './Pages/Explore';
 import SurpriseMode from './Pages/SurpriseMode';
 import './styles/App.css';
