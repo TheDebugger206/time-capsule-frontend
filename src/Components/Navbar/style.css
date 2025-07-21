@@ -53,8 +53,11 @@
 .buttons {
     display: flex;
     gap: 1vw;
-
     /* flex: 3; */
+}
+
+.home_profile_icon {
+    width: 2vw;
 }
 
 @media screen and (max-width: 768px) {

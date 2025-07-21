@@ -4,7 +4,7 @@ import search_icon from '../../Assets/Icons/search-icon.png';
 import FilterDropdown from '../FilterDropdown/FilterDropdown';
 
 
-const SearBar = () => {
+const SearBar = ({ onMoodChange }) => {
     return ( 
         <div className='search-bar display-row center'>
 
@@ -13,7 +13,8 @@ const SearBar = () => {
 
                 <FilterDropdown 
                     name={"Mood"} 
-                    choices={["Happy", "Sad"]}/>
+                    choices={["happy", "sad", "angry"]}
+                    onSelect={onMoodChange}/>
 
                 <FilterDropdown 
                     name={"Visibility"} 

@@ -1,4 +1,5 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/HomePage/HomePage';
 import Login from './Pages/Login/Login';
 import CreateCapsule from './Pages/CreateCapsule/CreateCapsule';
@@ -6,8 +7,7 @@ import MyCapsules from './Pages/MyCapsules/MyCapsules';
 import Register from './Pages/Register/Register';
 import Explore from './Pages/Explore/Explore';
 import PutInCapsule from './Pages/PutInCapsule/PutInCapsule';
-// import SurpriseMode from './Pages/SurpriseMode';
-// import './styles/App.css';
+import { ProtectedRoute } from './Components/ProtectedRoute/ProtectedRoute';
 import './styles/index.css';
 import './styles/style.css';
 import './styles/variables.css';
@@ -16,15 +16,20 @@ function App() {
   return (
     <Router>
       <Routes>
+
+        {/* Public Routes */}
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-        <Route path="/create" element={<CreateCapsule />} />
-        <Route path="/capsules" element={<MyCapsules />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/putInCapsule" element={<PutInCapsule />} />
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/create" element={<CreateCapsule />} />
+          <Route path="/profile" element={<MyCapsules />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/putInCapsule" element={<PutInCapsule />} />
+        </Route>
 
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
       </Routes>
     </Router>
   );

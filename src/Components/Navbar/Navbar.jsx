@@ -1,13 +1,17 @@
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import './style.css';
 import logo from '../../Assets/logo.png';
 import menu from '../../Assets/Icons/menu.png';
+import { useAuth } from '../../Provider/AuthProvider';
+import notification_icon from '../../Assets/Icons/bell (1).png';
+import profile_icon from '../../Assets/Icons/user.png';
 
 const Navbar = () => {
-
+    
+    const { token, setToken } = useAuth();
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -30,12 +34,26 @@ const Navbar = () => {
                     <Link to="/surprise">Surprise Me</Link>
                 </div>
 
-                <div className='buttons'>
-                    <Button btn_name="Login" type='primary' 
-                    onClick={() => navigate('/Login')} />
-                    <Button btn_name="Register" type='outline' 
-                    onClick={() => navigate('/Register')}/>
-                </div>
+                {!token && (
+                    <div className='buttons'>
+                        <Button btn_name="Login" type='primary' 
+                        onClick={() => navigate('/Login')} />
+                        <Button btn_name="Register" type='outline' 
+                        onClick={() => navigate('/Register')}/>
+                    </div>
+                )}
+
+                {token && (
+                    <div className=" buttons display-row">
+                        <button className='no-border no-bg ' type=''>
+                            <img className='home_profile_icon' src={notification_icon} alt="notifications-icon" />
+                        </button>
+                        <button className='no-border no-bg margin-left' type='submit'
+                            onClick={() => navigate("/profile")}>
+                            <img className='home_profile_icon' src={profile_icon} alt="profile-icon" />
+                        </button>
+                    </div>
+                )}
 
             </div>
 

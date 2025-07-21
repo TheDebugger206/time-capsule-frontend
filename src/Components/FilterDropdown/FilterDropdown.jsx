@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import arrow_down from '../../Assets/Icons/arrow-down.png';
 import './style.css';
 
-const FilterDropdown = ({name, choices = []}) => {
+const FilterDropdown = ({name, choices = [], onSelect}) => {
 
     const dropdownRef = useRef(null);
 
@@ -28,7 +28,13 @@ const FilterDropdown = ({name, choices = []}) => {
 
             <div ref={dropdownRef} className="dropdown-content">
                 {choices.map((choice) => (
-                    <a href="..." key={choice}>{choice}</a>
+                    <a href="..." 
+                    key={choice}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        onSelect(choice);
+                    }}
+                    >{choice}</a>
                     ))}
             </div>
 
