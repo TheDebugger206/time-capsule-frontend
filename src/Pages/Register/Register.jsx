@@ -9,16 +9,23 @@ import './style.css';
 const Register = () => {
 
     const navigate = useNavigate();
+    const [ResponseMessage, setResponseMessage] = useState();
     const [first_name, setFirstName] = useState("");
     const [last_name, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleRegister = () => {
+    const handleRegister = async () => {
+        
         const new_user = { first_name, last_name, email, password };
-        AuthController.register({new_user, navigate});
-    }
 
+        try {
+            const result =  await AuthController.register({new_user, navigate});
+        } catch (error) {
+            setResponseMessage(error.message || "Login failed. Please try again.");
+        }
+    }
+    
     return (
 
         <div>
@@ -29,6 +36,10 @@ const Register = () => {
 
                 <div className="register-form">
                     <h2>Register</h2>
+
+                    <div className="response-message">
+                        {ResponseMessage && <p style={{ color: 'red' }}>{ResponseMessage}</p>}
+                    </div>
 
                     <div className="firstname form-group">
                         <label>First Name</label>
@@ -60,7 +71,6 @@ const Register = () => {
 
             </div>
 
-            <About/>
 
         </div>
 

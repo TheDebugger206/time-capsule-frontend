@@ -1,4 +1,4 @@
-import React, { useDeferredValue, useState } from "react";
+import React,{ useState } from "react";
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 import About from "../../Components/About/About";
@@ -10,14 +10,20 @@ import AuthController from '../../Controllers/AuthController';
 const Login = () => {
 
     const { token, setToken } = useAuth();
-    const [ResponseMessage, setResponseMessage] = useState('');
+    const [ResponseMessage, setResponseMessage] = useState();
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         const user = { email, password };
-        AuthController.login({ user, setToken, navigate, url: "/" });
+
+        try {
+            await AuthController.login({ user, setToken, navigate, url: "/" });
+        } catch (error) {
+            setResponseMessage(error.message || "Login failed. Please try again.");
+        }
+        
     };
   
     return (
@@ -30,6 +36,10 @@ const Login = () => {
 
                 <div className="login-form">
                     <h2>Login</h2>
+
+                    <div className="response-message">
+                        {ResponseMessage && <p style={{ color: 'red' }}>{ResponseMessage}</p>}
+                    </div>
 
                     <div className="email form-group">
                         <label>Email</label>
@@ -47,8 +57,6 @@ const Login = () => {
 
                     <Button btn_name="Submit" type="primary"
                     onClick={ handleLogin }/>
-
-                    <div>{ResponseMessage}</div>
 
                 </div>
 

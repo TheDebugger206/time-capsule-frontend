@@ -32,7 +32,11 @@ const Profile = () => {
     useEffect(() => {
         const fetchCapsules = async () => {
 
+            console.log("test1");
+
             if (!user || !token) return;
+
+            console.log("test")
 
             const data = await CapsulesController.getUserUnrevealCapsule(token, user.id);
             setCapsules(data);
@@ -40,7 +44,7 @@ const Profile = () => {
             console.log(data);
 
             if (data.length > 0) {
-                const capsuleDate = new Date(data[0].date);
+                const capsuleDate = new Date(data[0].reveal_date);
                 const now = new Date();
                 const diffMs = capsuleDate - now;
                 const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));

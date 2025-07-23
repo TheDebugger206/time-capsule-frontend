@@ -6,7 +6,7 @@
 
 .page-bg {
     width: 100%;
-    min-height: 95vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,6 +14,7 @@
 }
 
 .register-form {
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
