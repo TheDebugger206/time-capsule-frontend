@@ -3,33 +3,20 @@ import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../../Components/Navbar/Navbar';
 import About from "../../Components/About/About";
 import Button from '../../Components/Button/Button';
+import AuthController from "../../Controllers/AuthController";
 import './style.css';
-import axios from "axios";
 
 const Register = () => {
 
     const navigate = useNavigate();
-
     const [first_name, setFirstName] = useState("");
     const [last_name, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const [responseMessage, setResponseMessage] = useState("");
-
-    const register = () => {
-
-        const newUser = {
-        first_name, last_name, email, password }
-
-        axios
-        .post("http://127.0.0.1:8000/api/v0.1/guest/register", newUser)
-        .then((response) => {
-                navigate("/Login");
-            })
-        .catch((err) => {
-                setResponseMessage("Error creating post");
-        });
+    const handleRegister = () => {
+        const new_user = { first_name, last_name, email, password };
+        AuthController.register({new_user, navigate});
     }
 
     return (
@@ -68,10 +55,7 @@ const Register = () => {
                     </div>
 
                     <Button btn_name="Submit" type="primary"
-                    onClick={() => register()}/>
-
-                    <div>{responseMessage}</div>
-
+                    onClick={handleRegister}/>
                 </div>
 
             </div>

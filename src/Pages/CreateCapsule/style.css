@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    padding-top: 1.5vw;
+    margin-top: 12vh;
 }   
 
 .main-left {
@@ -96,20 +96,41 @@
     width: 25vw;
 }
 
-.letter-textarea {
+textarea {
     position: absolute;
-    top: 12%;
-    left: 25%;
-    width: 50%;
-    height: 75%;
     outline: none;
     background: transparent;
     border: none;
-    font-size: 1vw;
     color: #000;
     line-height: 6vh;
     padding: 0;
 }
+
+.letter-title {
+    top: 12%;
+    left: 25%;
+    width: 50%;
+    height: 7%;
+    font-size: 1vw; 
+    font-weight: bold;
+}
+
+.letter-textarea {
+    top: 19%;
+    left: 25%;
+    width: 50%;
+    height: 68%;
+    font-size: 1vw;
+}
+
+.error-message {
+    position: absolute;
+    color: #e63946;
+    font-size: 0.9rem;
+    margin: 6px 0 12px 0;
+    font-weight: 500;
+    top: 5%;
+}   
 
 .main-right {
     display: flex;

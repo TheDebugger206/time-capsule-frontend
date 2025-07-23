@@ -4,7 +4,7 @@ import SearchBar from '../../Components/SearchBar/SearchBar';
 import './style.css';
 import Capsule from "../../Components/Capsule/Capsule";
 import { useAuth } from '../../Provider/AuthProvider';
-import axios from "axios";
+import CapsulesController from "../../Controllers/CapsulesController";
 
 const Explore = () => {
 
@@ -13,37 +13,20 @@ const Explore = () => {
     const [selectedMood, setSelectedMood] = useState('');
     const [selectedVisibility, setSelectedVisibility] = useState('');
 
-    const filteredCapsules = capsules?.filter(capsule =>
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const capsulesPerPage = 25;
+
+// const indexOfLastCapsule = currentPage * capsulesPerPage;
+// const indexOfFirstCapsule = indexOfLastCapsule - capsulesPerPage;
+
+// let filteredCapsules = capsules?.slice(indexOfFirstCapsule, indexOfLastCapsule);
+
+    let filteredCapsules = capsules?.filter(capsule =>
         selectedMood ? capsule.mood === selectedMood : true);
-
-    
-
 
     // fetch all capsules
     useEffect( () => {
-
-        const fetchCapsules = async () => {
-
-            if (!token) return;
-
-            const response  = await axios
-            .get ('http://127.0.0.1:8000/api/v0.1/user/capsules', {
-                headers : {
-                    Authorization: `Bearer ${token}`,
-                }
-            })
-            .then((response) => {
-                // const allCapsules = ;
-                setCapsules(response.data.payload);
-                console.log(response.data.payload)
-            }) 
-            .catch ((error) => {
-                console.log(error);
-            });
-        }
-
-        fetchCapsules();
-
+        CapsulesController.getAllCapsules(token, setCapsules);
         }, [token]);
 
     return (

@@ -46,9 +46,19 @@
 
 }
 
+.revealDateError {
+    position: absolute;
+    color: #e63946;
+    font-size: 1vw;
+    margin: 6px 0 12px 0;
+    font-weight: 500;
+    top: 45%;
+    left: 55%;
+}
+
 .postcard-name {
     top: 53%;
-    
+    background-color: none ;
 }
 
 .postcard-date {
@@ -75,4 +85,10 @@
     background-color: transparent;
     outline: none;
     font-size: 1.2vw;
+}
+
+.media-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 10vh;
 }

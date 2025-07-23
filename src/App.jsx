@@ -7,6 +7,7 @@ import MyCapsules from './Pages/MyCapsules/MyCapsules';
 import Register from './Pages/Register/Register';
 import Explore from './Pages/Explore/Explore';
 import PutInCapsule from './Pages/PutInCapsule/PutInCapsule';
+import Profile from './Pages/Profile/Profile';
 import { ProtectedRoute } from './Components/ProtectedRoute/ProtectedRoute';
 import './styles/index.css';
 import './styles/style.css';
@@ -25,7 +26,7 @@ function App() {
         {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/create" element={<CreateCapsule />} />
-          <Route path="/profile" element={<MyCapsules />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/putInCapsule" element={<PutInCapsule />} />
         </Route>
