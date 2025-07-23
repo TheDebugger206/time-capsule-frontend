@@ -1,0 +1,94 @@
+
+
+.putInCapsule {
+    height: 93vh;
+    align-items: center;
+}
+
+.postcard {
+    width: 50vw;
+    position: relative;
+}
+
+.postcard-stamp-here {
+    color: var(--text-color);
+    font-weight: 600;
+    position: absolute;
+    font-size: 1vw;
+    top: 26%;
+    left: 36%;
+    rotate: -10deg;
+}
+
+.postcard-empty-stamp-icon {
+    position: absolute;
+    width: 20vh;
+    top: 45%;
+    left: 33%;
+    rotate: -25deg;
+}
+
+.postcard-arrow-icon {
+    position: absolute;
+    width: 7vh;
+    top: 32%;
+    left: 42%;
+    opacity: 0.8;
+}
+
+.putInCapsule input {
+    position: absolute;
+    left: 59%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.2vw;
+
+}
+
+.revealDateError {
+    position: absolute;
+    color: #e63946;
+    font-size: 1vw;
+    margin: 6px 0 12px 0;
+    font-weight: 500;
+    top: 45%;
+    left: 55%;
+}
+
+.postcard-name {
+    top: 53%;
+    background-color: none ;
+}
+
+.postcard-date {
+    top: 67%;
+}
+
+.postcard-label-name {
+    position: absolute;
+    left: 54%;
+    top: 52.5%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.2vw;
+
+}
+
+.postcard-label-date {
+
+    position: absolute;
+    top: 66.5%;
+    left: 54.5%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.2vw;
+}
+
+.media-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 10vh;
+}

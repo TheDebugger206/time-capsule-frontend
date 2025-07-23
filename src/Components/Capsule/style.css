@@ -1,0 +1,42 @@
+
+.capsule {
+    width: 23vw;
+    border: 2px solid var(--text-color);
+    background-color: var(--bg-color);
+    padding: 4vh;
+    gap: 2vh;
+    text-align: center;
+}
+
+.capsule p {
+    color: var(--text-color);
+}
+
+.capsule-title {
+    font-weight: bold;
+    font-size: 1.2vw;
+}
+
+.capsule-mood {
+    gap: 0.5vw;
+}
+
+.capsule-mood p {
+    font-weight: 500;
+}
+
+.capsule-icon {
+    width: 2vw;
+}
+
+.capsule-date {
+
+}
+
+.capsule-date p { 
+    font-weight: 500;
+}
+
+.capsule-description {
+    font-weight: 500;
+}

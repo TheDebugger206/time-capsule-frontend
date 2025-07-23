@@ -1,0 +1,35 @@
+
+.search-bar {
+    align-items: center;
+    gap: 5vw;
+    padding-top: 12vh;
+}
+
+.search-bar-filters {
+    gap: 3vw;
+}
+
+.search-bar-filter {
+
+}
+
+.search-bar-search {
+    align-items: center;
+    gap: 1vw;
+    border: 1px solid var(--text-color);
+    border-radius: 16px;
+    padding: 0.5vh 1vh;
+    cursor: pointer;
+}
+
+.search-bar-search input {
+    height: 4vh;
+    width: 16vw;
+    border: none;
+    outline: none;
+    
+}
+
+.search-icon {
+    width: 1.3vw;
+}
