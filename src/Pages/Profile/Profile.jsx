@@ -12,20 +12,43 @@ import confetti_icon from '../../Assets/Icons/confetti.png';
 import hourglass_icon from '../../Assets/Icons/hourglass.png';
 import privacy_icon from '../../Assets/Icons/privacy.png';
 import './style.css';
-import axios from "axios";
 import TokenController from "../../Controllers/TokenController";
+import CapsulesController from "../../Controllers/CapsulesController";
 
 const Profile = () => {
 
     const { token, setToken } = useAuth();
     const [ user, setUser ] = useState(null);
     const [ capsules, setCapsules ] = useState(null);
+    const [countdown, setCountdown] = useState(null);
 
     const logout = () => { setToken(); };
 
     // decode token to user
     useEffect (() => {
         TokenController.decodeToken(token, setUser);
+    }, [token]);
+
+    useEffect(() => {
+        const fetchCapsules = async () => {
+
+            if (!user || !token) return;
+
+            const data = await CapsulesController.getUserUnrevealCapsule(token, user.id);
+            setCapsules(data);
+
+            console.log(data);
+
+            if (data.length > 0) {
+                const capsuleDate = new Date(data[0].date);
+                const now = new Date();
+                const diffMs = capsuleDate - now;
+                const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+                setCountdown(days > 0 ? days : 0);
+            }
+        };
+
+        fetchCapsules();
     }, [token]);
 
     return (
@@ -91,7 +114,8 @@ const Profile = () => {
                     </div>
 
                     <div className="countdown_3">
-                        <p className="countdown-number">18 <span>days</span></p>
+                        <p className="countdown-number">
+                            {countdown !== null ? countdown : "--"} <span>days</span>                            </p>
                     </div>
 
                     <Button btn_name={"Check details"} type="outline"/>
@@ -103,7 +127,9 @@ const Profile = () => {
         </div>
 
         <div className="MyCapsules-second-container">
+
                 <h2>Logout</h2>
+
                 <Button btn_name={"Logout"} type="primary"
                 onClick={() => logout() }/>
 

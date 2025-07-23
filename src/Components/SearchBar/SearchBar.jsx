@@ -13,7 +13,7 @@ const SearBar = ({ onMoodChange }) => {
 
                 <FilterDropdown 
                     name={"Mood"} 
-                    choices={["happy", "sad", "angry"]}
+                    choices={["", "happy", "sad", "angry"]}
                     onSelect={onMoodChange}/>
 
                 <FilterDropdown 

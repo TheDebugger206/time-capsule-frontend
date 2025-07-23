@@ -25,6 +25,33 @@ class CapsulesController {
 
     }
 
+    static async getAllRevealedCapsules (token, setCapsules) {
+        
+        if (!token) return;
+
+        const response  = await axios
+        .get ('http://127.0.0.1:8000/api/v0.1/user/capsules', {
+            headers : {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+        .then((response) => {
+            const capsules = response.data.payload;
+
+            const result = capsules.filter(capsule => capsule.is_revealed === 1);
+
+            setCapsules(result);
+            
+            console.log(capsules);
+            console.log(result);
+
+        }) 
+        .catch ((error) => {
+            console.log(error);
+        });
+
+    }
+
     static async createCapsule (token, capsule) {
 
         if (!token) return;
@@ -52,19 +79,48 @@ class CapsulesController {
 
     static async getUserCapsules (token, setUserCapsules, userId) {
 
+        console.log(userId);
             await axios
-            .get(`ttp://127.0.0.1:8000/api/v0.1/user/user_capsules/${userId}`, {
+            .get(`http://127.0.0.1:8000/api/v0.1/user/user_capsules/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }})
             .then((response) => {
                 setUserCapsules(response.payload);
+                console.log(response);
             })
             .catch((error) => {
                 console.log(error.message);
             })   
     }
 
+    static async getUserUnrevealCapsule (token, userId) {
+        
+        if (!token || !userId) return [];
+
+        try {
+            
+            const response  = 
+            await axios
+            .get (`http://127.0.0.1:8000/api/v0.1/user/user_capsules/${userId}`, {
+                headers : {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            const capsules = response.data.payload;
+
+            const result = capsules.filter(capsule => capsule.is_revealed === 0);
+
+            return result;
+
+        } catch (error) {
+            console.log(error.response);
+            return [];
+        }
+
+
+    }
 
 }
 

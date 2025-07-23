@@ -1,10 +1,11 @@
 
 .capsule {
-    width: 25vw;
+    width: 23vw;
     border: 2px solid var(--text-color);
     background-color: var(--bg-color);
-    padding: 2vh;
-    gap: 1vh;
+    padding: 4vh;
+    gap: 2vh;
+    text-align: center;
 }
 
 .capsule p {

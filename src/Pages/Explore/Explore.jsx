@@ -16,17 +16,17 @@ const Explore = () => {
     // const [currentPage, setCurrentPage] = useState(1);
     // const capsulesPerPage = 25;
 
-// const indexOfLastCapsule = currentPage * capsulesPerPage;
-// const indexOfFirstCapsule = indexOfLastCapsule - capsulesPerPage;
+    // const indexOfLastCapsule = currentPage * capsulesPerPage;
+    // const indexOfFirstCapsule = indexOfLastCapsule - capsulesPerPage;
 
-// let filteredCapsules = capsules?.slice(indexOfFirstCapsule, indexOfLastCapsule);
+    // let filteredCapsules = capsules?.slice(indexOfFirstCapsule, indexOfLastCapsule);
 
     let filteredCapsules = capsules?.filter(capsule =>
         selectedMood ? capsule.mood === selectedMood : true);
 
-    // fetch all capsules
+    // fetch revealed capsules
     useEffect( () => {
-        CapsulesController.getAllCapsules(token, setCapsules);
+        CapsulesController.getAllRevealedCapsules(token, setCapsules);
         }, [token]);
 
     return (
@@ -39,9 +39,10 @@ const Explore = () => {
             filteredCapsules?.map((capsule, index) => (
                 <Capsule 
                     title={capsule.title}
-                    mode={capsule.mood}
+                    mood={capsule.mood}
                     description={capsule.message}
-                    date_from={capsule.updated_at} date_to={capsule.reveal_date}
+                    date_from={capsule.updated_at} 
+                    date_to={capsule.reveal_date}
                 />
             ))
             }
